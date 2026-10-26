@@ -1,0 +1,81 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-sand: var(--sand);
+  --color-grid: var(--grid);
+}
+
+:root {
+  --radius: 0.25rem;
+  color-scheme: dark;
+  --background: oklch(0.205 0.009 85);
+  --foreground: oklch(0.93 0.012 85);
+  --card: oklch(0.23 0.009 85);
+  --card-foreground: var(--foreground);
+  --primary: oklch(0.73 0.15 75);
+  --primary-foreground: var(--background);
+  --secondary: oklch(0.27 0.012 85);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--secondary);
+  --muted-foreground: oklch(0.7 0.013 85);
+  --accent: var(--primary);
+  --accent-foreground: var(--background);
+  --border: oklch(0.93 0.012 85 / 13%);
+  --input: oklch(0.93 0.012 85 / 23%);
+  --ring: var(--primary);
+  --ink: var(--background);
+  --sand: var(--foreground);
+  --grid: oklch(0.93 0.012 85 / 3%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  h1, h2, h3 { font-family: var(--font-display); }
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+   letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@utility animate-rise { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
+
+.artifact-emblem { width: 64px; height: 88px; color: var(--primary); }
+.artifact-opening { min-height: min(760px, 87svh); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-rise { animation: none; }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Artifact Grafx",
+  "short_name": "ArtifactGrafx",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#d9a95b",
+  "background_color": "#342e27",
+  "display": "standalone"
+}
