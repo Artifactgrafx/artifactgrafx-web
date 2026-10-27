@@ -11,6 +11,6 @@ export default defineConfig({
     tanstackStart(),
     viteReact(),
     tailwindcss(),
-    nitro({ preset: "static", prerender: { routes: ["/"] } }),
+    nitro({ preset: "netlify" }),
   ],
 });
