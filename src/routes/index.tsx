@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowDown, ArrowUp, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -53,6 +53,23 @@ function Marker({ n, e, title }: { n: string; e: string; title: string }) {
 function Index() {
   const [need, setNeed] = useState("Brand Identity");
   const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main id="top">
       <section className="artifact-opening flex flex-col items-center justify-center px-6 text-center">
@@ -70,7 +87,7 @@ function Index() {
       </section>
 
       <div className="mx-auto max-w-5xl px-6 md:px-10">
-        <section id="intro" className="border-b py-16 text-center md:py-24">
+        <section id="intro" className="border-b py-16 text-center md:py-24 reveal">
           <p className="mx-auto max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
             <span className="text-foreground">Your business is real. Your brand? It's in there —</span><br className="hidden md:block" />
             {" "}buried under tech overwhelm and not knowing where to start.<br className="hidden md:block" />
@@ -78,11 +95,11 @@ function Index() {
           </p>
         </section>
 
-        <section id="services" className="border-b py-16 md:py-24">
+        <section id="services" className="border-b py-16 md:py-24 reveal">
           <Marker n="03" e="07" title="What We Excavate" />
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map(([n, title, description]) => (
-              <article key={title} className="border-t border-primary/40 pt-5">
+            {services.map(([n, title, description], idx) => (
+              <article key={title} className="border-t border-primary/40 pt-5 reveal" style={{ transitionDelay: `${idx * 100}ms` }}>
                 <span className="label-mono text-primary/70">{n}</span>
                 <h3 className="mt-3 text-xl font-semibold">{title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{description}</p>
@@ -91,11 +108,11 @@ function Index() {
           </div>
         </section>
 
-        <section id="finds" className="border-b py-16 md:py-24">
+        <section id="finds" className="border-b py-16 md:py-24 reveal">
           <Marker n="05" e="14" title="Unearthed Artifacts" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {finds.map(([specimen, name, type]) => (
-              <article key={specimen} className="flex aspect-[4/3] flex-col justify-between border bg-card/70 p-5 transition-colors hover:border-primary/60">
+            {finds.map(([specimen, name, type], idx) => (
+              <article key={specimen} className="flex aspect-[4/3] flex-col justify-between border bg-card/70 p-5 transition-all hover:border-primary/60 hover:-translate-y-1 reveal" style={{ transitionDelay: `${idx * 50}ms` }}>
                 <span className="label-mono text-muted-foreground">{specimen}</span>
                 <div><h3 className="text-lg font-medium">{name}</h3><p className="label-mono mt-2 text-primary">{type}</p></div>
               </article>
@@ -103,7 +120,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="border-b py-16 md:py-24">
+        <section className="border-b py-16 md:py-24 reveal">
           <Marker n="07" e="21" title="The Artcheologist" />
           <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
             <div className="flex size-28 shrink-0 items-center justify-center border border-primary/40 bg-card font-display text-5xl text-primary">A</div>
@@ -113,7 +130,7 @@ function Index() {
           </div>
         </section>
 
-        <section id="dig" className="py-16 md:py-24">
+        <section id="dig" className="py-16 md:py-24 reveal">
           <Marker n="09" e="28" title="Start Your Dig" />
           <p className="text-muted-foreground">Not sure where to start? That's the whole point. Let's dig in.</p>
           {sent ? (
