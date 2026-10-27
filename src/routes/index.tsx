@@ -62,6 +62,7 @@ function Index() {
           <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
             <span className="text-primary">Artcheologist</span> — helping small businesses get online
           </p>
+          <p className="label-mono mt-4 text-primary/70 tracking-[0.3em]">Discover. Design. Deliver.</p>
           <Button asChild variant="link" className="label-mono mt-9 h-auto flex-col gap-2 text-primary/70 no-underline hover:text-primary hover:no-underline">
             <a href="#intro">Dig deeper<ArrowDown aria-hidden="true" /></a>
           </Button>
