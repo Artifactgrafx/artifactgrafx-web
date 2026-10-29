@@ -30,3 +30,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Worktrees
+.worktrees/
+worktrees/
+
+# Netlify CLI / local deploy cache
+.netlify/
+
+# Generated social media renders (scripts + copy are tracked, output is rebuildable)
+social-media/**/*.mp4
+social-media/**/*.png
+social-media/**/*.zip
