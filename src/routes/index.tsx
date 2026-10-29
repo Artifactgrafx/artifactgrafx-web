@@ -77,7 +77,7 @@ function Index() {
           <Emblem />
           <h1 className="mt-12 text-4xl font-bold sm:text-6xl">ArtifactGrafx</h1>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-            <span className="text-primary">Artcheologist</span> — helping small businesses get online
+            <span className="text-primary">Artcheologist</span> — unearthing a creative presence online for small businesses
           </p>
           <p className="label-mono mt-4 text-primary/70 tracking-[0.3em]">Discover. Design. Deliver.</p>
           <Button asChild variant="link" className="label-mono mt-9 h-auto flex-col gap-2 text-primary/70 no-underline hover:text-primary hover:no-underline">
